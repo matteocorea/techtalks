@@ -105,11 +105,38 @@
 			<h3>Fingerprint distance calculator</h3>
 			<div class="image"><img class="centered" src="vafis2.png"></div>
 			<p>The "easy" part</p>
-			<ul>
-				<li>Get all the videos with a comparable length</li>
-				<li>Compute the VFP distance (still uncertain about the method... but could be a simple difference... or edit distance, etc.)</li>
-				<li>Return all the videos with distance &lt; threshold (again, still uncertain about the threshold, maybe dynamic)</li>
-			</ul>
+			<ol>
+				<li>Compare the whole FPDB with a given video FP</li>
+				<li>Compute a sensible threshold</li>
+				<li>Return all the probable-duplicates</li>
+			</ol>
+		</article>
+		
+		<article>
+			<h3>Fingerprint distance calculator</h3>
+			<div class="build">
+				<div>
+					<h4>Optimise search (cut the search space)</h4>
+					<ul>
+						<li>Compare only with videos having a comparable length</li>
+						<li>Use title (?) or other known metadata</li>
+					</ul>
+				</div>
+				<div>
+					<h4>FP Distance (depends on the actual FP extraction)</h4>
+					<ul>
+						<li>could be as easy as a difference</li>
+						<li>edit distance, hamming distance</li>
+					</ul>
+				</div>
+				<div>
+					<h4>Distance Threshold</h4>
+					<ul>
+						<li>Static</li>
+						<li>No idea</li>
+					</ul>
+				</div>
+			</div>
 		</article>
 		
 		<article>
