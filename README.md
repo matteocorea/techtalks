@@ -1,2 +1,2 @@
-Video AFIS: http://blah
+Video AFIS: http://matteocorea.github.io/techtalks/vafis.html
 
