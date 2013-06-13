@@ -53,12 +53,12 @@
 				<li>The audio is often completely different</li>
 				<li>Size and quality can differ</li>
 				<li>Overall color and luminance correction are possible</li>
-				<li>Length and relative distance between frames doesn't change</li>
+				<li>Length and absolute distance between frames don't change</li>
 			</ul>
 			<p class="build"><span>therefore:</span></p>
 			<ul class="build">
 				<li>the extraction is based on the images stream only</li>
-				<li>the keyframes are initially
+				<li>the keyframes should be
 					<ul>
 						<li>converted to grayscale</li>
 						<li>scaled to a fixed size</li>
@@ -69,12 +69,35 @@
 		</article>
 		
 		<article>
-			<h3>Possible algorithms (increasing complexity)</h3>
+			<h3>Keyframes based fingerprinting</h3>
+			<ol>
+				<li>Extract keyframes</li>
+				<li>For each keyframe, get the fingerprint</li>
+			</ol>
+			<hr>
+			<div class="build">
+				<h3>Keyframe extraction</h3>
+				<div class="build">
+					<p>My method: get <i>n</i> frames linearly sampling the video</p>
+					<p>My result: <strong>terrible!</strong> (that is terribly precise)<p>
+				</div> 
+				<div>
+					<p>Other methods</p>
+					<ul>
+						<li>peaks in the first (or second) derivative of the luminance variation function</li>
+						<li>progressive simplification via gaussian noise suppression, discrete contour evolution, relevance order measure</li>
+					</ul>
+				</div>
+			</div>
+		</article>
+		
+		<article>
+			<h3>Keyframe fingerprint extraction</h3>
 			<ul class="build">
 				<li>Average luminance on the frame: for <i>k</i> keyframes, we store the average value of all the pixels</li>
 				<li>Average luminance on the blocks: same as above, but each frame is divided into <i>n</i> x <i>m</i> blocks in advance (good for subtitles)
 				<li>Orientation field: same as above, but instead of the luminance, for each block, the orientation field on the block is stored (angle, magnitude)</li>
-				<li>other <b>incredible</b> methods that I simply don't know (maybe later)</li>
+				<li>other <b>incredible</b> methods that I simply don't know (nonrigid image matching?)</li>
 			</ul>
 		</article>
 		
@@ -84,7 +107,7 @@
 			<p>The "easy" part</p>
 			<ul>
 				<li>Get all the videos with a comparable length</li>
-				<li>Compute the VFP distance (still uncertain about the method... but could be a simple difference...)</li>
+				<li>Compute the VFP distance (still uncertain about the method... but could be a simple difference... or edit distance, etc.)</li>
 				<li>Return all the videos with distance &lt; threshold (again, still uncertain about the threshold, maybe dynamic)</li>
 			</ul>
 		</article>
